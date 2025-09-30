@@ -38,10 +38,10 @@ def get_preprocessing(exp_dir, result_dir, working_dir, output_dir, subject_list
 	infosource_preproc.iterables = [('subject_id', subject_list), ('task', task_list), ('fwhm', fwhm_list)]
 
 	# Templates to select files node
-	anat_file = opj('{subject_id}', 'unprocessed', '3T', 'T1w_MPR1', 
+	anat_file = opj('STRUCTURAL', '{subject_id}', 'unprocessed', '3T', 'T1w_MPR1', 
 					'{subject_id}_3T_T1w_MPR1.nii.gz')
 
-	func_file = opj('{subject_id}', 'unprocessed', '3T', 'tfMRI_{task}_LR', 
+	func_file = opj('{task}', '{subject_id}', 'unprocessed', '3T', 'tfMRI_{task}_LR', 
 					'{subject_id}_3T_tfMRI_{task}_LR.nii.gz')
 
 	template = {'anat' : anat_file, 'func' : func_file}
