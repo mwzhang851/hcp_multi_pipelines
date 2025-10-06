@@ -178,7 +178,7 @@ def get_l1_analysis(exp_dir, output_dir, working_dir, result_dir, subject_list, 
 	func_file = opj(output_dir, 'preprocess_fsl', '_fwhm_{fwhm}_subject_id_{subject_id}_task_{task}', '_addmean0',
 	'{subject_id}_3T_tfMRI_{task}_LR_dtype_mcf_mask_smooth_mask_gms_tempfilt_maths.nii.gz')
 
-	event_file = opj(exp_dir, '{task}', '{subject_id}', 'unprocessed', '3T', 'tfMRI_{task}_LR', 'LINKED_DATA', 'EPRIME', 'EVs', '*.txt')
+	event_file = opj(exp_dir, '{subject_id}', 'unprocessed', '3T', 'tfMRI_{task}_LR', 'LINKED_DATA', 'EPRIME', 'EVs', '*.txt')
 
 	template = {'param' : param_file, 'func' : func_file, 'event' : event_file}
 
@@ -250,7 +250,7 @@ def get_l1_analysis(exp_dir, output_dir, working_dir, result_dir, subject_list, 
 
 	return l1_analysis
 
-def get_registration(exp_dir, output_dir, working_dir, result_dir, subject_list, task_list, contrast_list, fwhm_list, param_list, hrf):
+def get_registration(exp_dir, output_dir, working_dir, result_dir, subject_list, task_list, contrast_list, fwhm_list, nb_param, hrf):
 	"""
 	Returns the FSL registration workflow to apply AFTER L1 analysis.
 	Parameters: 
@@ -275,7 +275,7 @@ def get_registration(exp_dir, output_dir, working_dir, result_dir, subject_list,
 	num_contrast = [i for i in range(1, len(contrast_list)+1)]
 
 	infosource.iterables = [('subject_id', subject_list), ('task', task_list), 
-	('contrast', num_contrast), ('fwhm', fwhm_list), ('nb_param', param_list), ('hrf', hrf)]
+	('contrast', num_contrast), ('fwhm', fwhm_list), ('nb_param', nb_param), ('hrf', hrf)]
 
 	func2anat_transform_file = opj(output_dir, 'preprocess_fsl', '_fwhm_{fwhm}_subject_id_{subject_id}_task_{task}', 
 		'{subject_id}_3T_tfMRI_{task}_LR_dtype_roi_flirt.mat')
