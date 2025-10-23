@@ -1,6 +1,6 @@
 #python3
 #This script can be used to run fsl and spm pipelines with specific parameters. 
-#Use : python3 run_pipeline.py -e /srv/tempdd/egermani/hcp_pipelines/data/original -r /srv/tempdd/egermani/hcp_pipelines/data/derived -s '["100206"]' -o '["l1"]' -S 'SPM' -t '["MOTOR"]' -c '["rh"]' -f 8 -p 0 -h 'derivatives'
+#Use : python3 src/run_pipeline.py -e /srv/tempdd/egermani/hcp_pipelines/data/original -r /srv/tempdd/egermani/hcp_pipelines/data/derived -s '["118528"]' -o '["preprocessing"]' -S 'fsl' -t '["MOTOR"]' -c '["rh"]' -f 8 -p 0 -h 'derivatives'
 
 import random
 import os 
